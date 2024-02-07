@@ -2,8 +2,7 @@
 const ValorDisplay = document.getElementById('displayInput');
 let value = parseInt(ValorDisplay.value); // Move a declaração para fora dos eventos de clique
 
-const botaoMais = document.getElementById('botaoMAIS');
-botaoMais.addEventListener('click', () => {
+const somarBoto = () => {
     if (isNaN(value)) {
         value = 1;
     } else {
@@ -11,17 +10,32 @@ botaoMais.addEventListener('click', () => {
     }
     ValorDisplay.value = value;
     // Armazena o valor atual no sessionStorage
-    sessionStorage.setItem('itemValue', value);
-});
 
-const botaoMenos = document.getElementById('botaoMENOS');
-botaoMenos.addEventListener('click', () => {
+}
+
+const subtrairBoto = () => {
     if (value > 0) {
         value--;
     }
     ValorDisplay.value = value;
     // Armazena o valor atual no sessionStorage
+
+}
+
+const Armazenar_Mais_Menos = () => {
     sessionStorage.setItem('itemValue', value);
+    sessionStorage.setItem('itemValue', value);
+}
+
+
+const botaoMais = document.getElementById('botaoMAIS');
+botaoMais.addEventListener('click', () => {
+    somarBoto()
+});
+
+const botaoMenos = document.getElementById('botaoMENOS');
+botaoMenos.addEventListener('click', () => {
+    subtrairBoto()
 });
 
 const validacoes = () => {
@@ -30,9 +44,10 @@ const validacoes = () => {
     } else {
         alert("Produto Armazenado no carrinho");
         location.reload();
+        Armazenar_Mais_Menos()
     }
-    
-}    
+
+}
 
 document.querySelector("#ComprarProduto").addEventListener("click", () => {
     validacoes()
