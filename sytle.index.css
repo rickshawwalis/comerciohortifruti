@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style: none;
+    border: none;
+}
+
+
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*Muda a foto dos alimentos*/
+.imagemAlimento {
+    width: 100px;
+    height: 80px;
+}
+
+/*Muda a div onde as outras estão guardadas*/
+.gridDiv {
+    margin: auto;
+    border: 1px solid;
+    box-shadow: 1px 1px 10px;
+    margin-top: 250px;
+    margin-bottom: -220px;
+    max-width: 380px;
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 210px 150px;
+    grid-template-rows: 85px 140px;
+
+    grid-template-areas:
+        'gridimagem gridpreco'
+        'gridResultado gridResultado'
+    ;
+    height: 250px;
+}
+
+
+/*MUDA a div da imagem*/
+.divImagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: gridimagem;
+    gap: 20px;
+
+}
+
+/*MUDA a div do preço*/
+.divPreco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: gridpreco;
+}
+
+/*MUDA selection opção*/
+.divOpcao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px 0px 0px;
+    grid-area: gridResultado;
+}
+
+/*MUDA o botao*/
+.botaoComprar {
+    margin-top: 30px;
+}
+
+/*MUDA a div do input radio*/
+.inputEscolha {
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    gap: 10px;
+}
+
+
+/*MUDA O "p" dos preços*/
+.Ppreco {
+    background-color: rgb(37, 120, 7);
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    width: 110px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 16px;
+}
+
+.nomeNegocio {
+    margin-top: 80px;
+    margin-bottom: -280px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: 900;
+    font-family: 'Honk', system-ui;
+    width: 280px;
+    height: 200px;
+}
+
+select {
+    width: 100px;
+    border: 1px solid;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/*estilo do botao comprar*/
+.botaoComprar {
+    background-color: rgb(37, 120, 7);
+    color: white;
+    width: 150px;
+    height: 80px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 2px solid black;
+    font-weight: 900;
+}
+
+
+
+
+/*input que mostra o numero clicar em mais ou menos*/
+.display {
+    border: 1px solid;
+    width: 100px;
+    text-align: center;
+    font-weight: 900;
+}
+
+/*ajusta os dois botoes mais e menos*/
+.botaoCalcGeral {
+    background: none;
+    cursor: pointer;
+    color: rgb(37, 120, 7);
+    font-size: 30px;
+}
+
+/*ajusta a div onde estão os dois botões mais ou menso*/
+.divMaisOuMenos {
+    display: flex;
+    align-items: center;
+}
+
+header {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    height: 50px;
+    align-items: center;
+    margin-bottom: 150px;
+    position: fixed;
+    top: 0px;
+    /* Fixa o menu no topo da página */
+    left: 0px;
+    /* Alinha o menu no início da página */
+    width: 100%;
+    /* Define a largura do menu para cobrir toda a largura da tela */
+    padding-left: 10px;
+    /* Adiciona um espaçamento à esquerda */
+    box-sizing: border-box;
+    /* Garante que o padding não aumente a largura total do elemento */
+}
+
+
+ul {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    cursor: pointer;
+
+}
+
+li {
+    background-color: rgb(37, 120, 7);
+    color: white;
+    width: 115px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    font-family: 'Concert One', sans-serif;
+}
