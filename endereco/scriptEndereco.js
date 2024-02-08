@@ -69,6 +69,6 @@ const FormEnd = () => {
   let botaoRetirada = document.querySelector("#botaoRetirada")
   botaoRetirada.addEventListener("click", () => {
     Escolha();
-    window.location.href = '/formapagamento/pagamento.html'
+    window.location.href = '/comerciohortifruti/formapagamento/pagamento.html'
   })
   w
