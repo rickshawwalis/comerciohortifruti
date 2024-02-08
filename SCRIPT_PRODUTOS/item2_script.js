@@ -1,6 +1,6 @@
 //SCRIPT PARA COLOCAR QUANTIDADE DE ITEM A SER PEDIDAS
 document.addEventListener('DOMContentLoaded', ()=>{
-    const ValorDisplay = document.getElementById('displayInput1');
+    const ValorDisplay = document.getElementById('displayInput2');
     let value = parseInt(ValorDisplay.value); // Move a declaração para fora dos eventos de clique
     
     const somarBotao = () => {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         ValorDisplay.value = value;
     }
     //BOTÃO MAIS
-    document.getElementById('botaoMAIS1').addEventListener('click', somarBotao);
+    document.getElementById('botaoMAIS2').addEventListener('click', somarBotao);
     
     const subtrairBotao = () => {
         if (value > 0) {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         ValorDisplay.value = value;
     }
     //BOTÃO MENOS
-    document.getElementById('botaoMENOS1').addEventListener('click', subtrairBotao);
+    document.getElementById('botaoMENOS2').addEventListener('click', subtrairBotao);
     
     
     let indiceQuantidade = sessionStorage.length;
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
     
     // SALVAR OS DADOS DE NOME DO PRODUTO E VALOR NO SESSIONSTORAGE
-    const BotaoComprar = document.querySelector("#ComprarProduto1");
+    const BotaoComprar = document.querySelector("#ComprarProduto2");
     
     const indiceProduto = sessionStorage.length;
     const indeceValor = sessionStorage.length; // Corrigido: era 'sessionStorage.lenght'
