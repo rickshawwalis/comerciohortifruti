@@ -1,16 +1,17 @@
-//SCRIPT PARA COLOCAR QUANTIDADE DE ITEM A SER PEDIDAS
+// SCRIPT PARA COLOCAR QUANTIDADE DE ITENS A SEREM PEDIDOS
 const ValorDisplay = document.getElementById('displayInput1');
-let value = parseInt(ValorDisplay.value); // Move a declaração para fora dos eventos de clique
+let value = parseInt(ValorDisplay.value) || 0; // Move a declaração para fora dos eventos de clique
 
 const somarBotao = () => {
-    if (isNaN(value)) { //verifica se value não é um número.
+    if (isNaN(value)) { // verifica se value não é um número.
         value = 1;
     } else {
         value++;
     }
     ValorDisplay.value = value;
-}
-//BOTÃO MAIS
+};
+
+// BOTÃO MAIS
 document.getElementById('botaoMAIS1').addEventListener('click', somarBotao);
 
 const subtrairBotao = () => {
@@ -18,10 +19,10 @@ const subtrairBotao = () => {
         value--;
     }
     ValorDisplay.value = value;
-}
-//BOTÃO MENOS
-document.getElementById('botaoMENOS1').addEventListener('click', subtrairBotao);
+};
 
+// BOTÃO MENOS
+document.getElementById('botaoMENOS1').addEventListener('click', subtrairBotao);
 
 let indiceQuantidade = sessionStorage.length;
 const Armazenar_Mais_Menos = () => {
@@ -30,35 +31,37 @@ const Armazenar_Mais_Menos = () => {
     const QuantidadeProduto = `quantidadeProduto_${indiceQuantidade}`;
     // Armazene os novos itens no sessionStorage
     sessionStorage.setItem(QuantidadeProduto, value);
-}
+};
 
-//SALVAR OS DADOS DE NOME DO PRODUTO E VALOR NO SESSIONSTORAGE
+
+// SALVAR OS DADOS DE NOME DO PRODUTO E VALOR NO SESSIONSTORAGE
 const BotaoComprar = document.querySelector("#ComprarProduto1");
 
 const indiceProduto = sessionStorage.length;
-const indeceValor = sessionStorage.lenght;
+const indeceValor = sessionStorage.length; // Corrigido: era 'sessionStorage.lenght'
 const EfetuarCompra = () => {
     if (BotaoComprar) {
         const nome = BotaoComprar.getAttribute("data-texto");
         const valor = parseFloat(BotaoComprar.value);
 
-        const nomeProduto = `nome_Produto_${nome}`;
-        const valorProduto = `valor_Produto_${valor}`;
+        const nomeProduto = `nome_Produto_${indiceProduto}`;
+        const valorProduto = `valor_Produto_${indeceValor}`;
 
         sessionStorage.setItem(nomeProduto, nome);
         sessionStorage.setItem(valorProduto, valor);
     }
 }
 
+
 //VALIDA SE A QUANTIDADE ESTÁ INSERIDA E DEPOIS ENVIA AO SESSIONSTORAGE
 const validacoes = () => {
     if (ValorDisplay.value === "" || ValorDisplay.value == 0) {
         alert("Informe a quantidade!");
     } else {
-        alert("Produto Armazenado no carrinho");
-        //location.reload();
+         //location.reload();
         Armazenar_Mais_Menos();
         EfetuarCompra();
+        window.location.href = '/resumo/pagina-Resumo.html'
     }
 
 }

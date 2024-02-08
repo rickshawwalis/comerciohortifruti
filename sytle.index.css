@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
-
 * {
     margin: 0px;
     padding: 0px;
@@ -128,6 +126,7 @@ h1 {
     font-family: 'Honk', system-ui;
     width: 280px;
     height: 200px;
+    color: rgb(37, 120, 7);
 }
 
 select {
