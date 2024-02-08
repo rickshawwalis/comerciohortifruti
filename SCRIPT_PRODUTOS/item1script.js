@@ -1,6 +1,6 @@
 //SCRIPT PARA COLOCAR QUANTIDADE DE ITEM A SER PEDIDAS
-const ValorDisplay = document.getElementById('displayInput1');
-let value = parseInt(ValorDisplay.value); // Move a declaração para fora dos eventos de clique
+const ValorDisplay1 = document.getElementById('displayInput1');
+let value = parseInt(ValorDisplay1.value); // Move a declaração para fora dos eventos de clique
 
 const somarBotao = () => {
     if (isNaN(value)) { //verifica se value não é um número.
@@ -8,7 +8,7 @@ const somarBotao = () => {
     } else {
         value++;
     }
-    ValorDisplay.value = value;
+    ValorDisplay1.value = value;
 }
 //BOTÃO MAIS
 document.getElementById('botaoMAIS1').addEventListener('click', somarBotao);
@@ -17,7 +17,7 @@ const subtrairBotao = () => {
     if (value > 0) {
         value--;
     }
-    ValorDisplay.value = value;
+    ValorDisplay1.value = value;
 }
 //BOTÃO MENOS
 document.getElementById('botaoMENOS1').addEventListener('click', subtrairBotao);
@@ -53,7 +53,7 @@ const EfetuarCompra = () => {
 
 //VALIDA SE A QUANTIDADE ESTÁ INSERIDA E DEPOIS ENVIA AO SESSIONSTORAGE
 const validacoes = () => {
-    if (ValorDisplay.value === "" || ValorDisplay.value == 0) {
+    if (ValorDisplay1.value === "" || ValorDisplay1.value == 0) {
         alert("Informe a quantidade!");
     } else {
          //location.reload();
