@@ -1,4 +1,3 @@
-
 const carrinhoCompras = () => {
   let somaGeral = 0
   const container = document.querySelector('.conteudo');
@@ -39,7 +38,7 @@ const carrinhoCompras = () => {
     for (let i = 0; i < sessionStorage.length; i++) {
       const chaveProduto = `nome_Produto_${i}`;
       const chaveValor = `valor_Produto_${i}`;
-      const chaveQuantidade = `quantidadeProduto_$${i}`;
+      const chaveQuantidade = `quantidadeProduto_${i}`;
 
       const escolhaProduto = sessionStorage.getItem(chaveProduto);
       const escolhaValor = parseFloat(sessionStorage.getItem(chaveValor));

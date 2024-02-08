@@ -1,17 +1,16 @@
-// SCRIPT PARA COLOCAR QUANTIDADE DE ITENS A SEREM PEDIDOS
+//SCRIPT PARA COLOCAR QUANTIDADE DE ITEM A SER PEDIDAS
 const ValorDisplay = document.getElementById('displayInput1');
-let value = parseInt(ValorDisplay.value) || 0; // Move a declaração para fora dos eventos de clique
+let value = parseInt(ValorDisplay.value); // Move a declaração para fora dos eventos de clique
 
 const somarBotao = () => {
-    if (isNaN(value)) { // verifica se value não é um número.
+    if (isNaN(value)) { //verifica se value não é um número.
         value = 1;
     } else {
         value++;
     }
     ValorDisplay.value = value;
-};
-
-// BOTÃO MAIS
+}
+//BOTÃO MAIS
 document.getElementById('botaoMAIS1').addEventListener('click', somarBotao);
 
 const subtrairBotao = () => {
@@ -19,10 +18,10 @@ const subtrairBotao = () => {
         value--;
     }
     ValorDisplay.value = value;
-};
-
-// BOTÃO MENOS
+}
+//BOTÃO MENOS
 document.getElementById('botaoMENOS1').addEventListener('click', subtrairBotao);
+
 
 let indiceQuantidade = sessionStorage.length;
 const Armazenar_Mais_Menos = () => {
@@ -30,9 +29,8 @@ const Armazenar_Mais_Menos = () => {
     // Use o índice atual para criar chaves únicas no sessionStorage
     const QuantidadeProduto = `quantidadeProduto_${indiceQuantidade}`;
     // Armazene os novos itens no sessionStorage
-    sessionStorage.setItem(QuantidadeProduto, value);
-};
-
+    sessionStorage.setItem(QuantidadeProduto, parseInt(value));
+}
 
 // SALVAR OS DADOS DE NOME DO PRODUTO E VALOR NO SESSIONSTORAGE
 const BotaoComprar = document.querySelector("#ComprarProduto1");
