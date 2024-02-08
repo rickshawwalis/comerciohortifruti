@@ -88,6 +88,7 @@ const enviarMensagemWhatsApp = () => {
 
 
       textoParaEnviar += `
+      unescape(encodeURI('🤣🤣🤣'))
     \n*PEDIDO Nº:* ${numeroPedido}
     \n*PRODUTO:* \n${escolhaProduto}
     \n*VALOR PRODUTO:* R$ ${escolhaValor.toFixed(2)}
