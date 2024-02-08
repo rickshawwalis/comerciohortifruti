@@ -2,18 +2,16 @@
 const ValorDisplay = document.getElementById('displayInput');
 let value = parseInt(ValorDisplay.value); // Move a declaração para fora dos eventos de clique
 
-const somarBoto = () => {
-    if (isNaN(value)) {
+const somarBotao = () => {
+    if (isNaN(value)) { //verifica se value não é um número.
         value = 1;
     } else {
         value++;
     }
     ValorDisplay.value = value;
-    // Armazena o valor atual no sessionStorage
-
 }
 
-const subtrairBoto = () => {
+const subtrairBotao = () => {
     if (value > 0) {
         value--;
     }
@@ -22,21 +20,16 @@ const subtrairBoto = () => {
 
 }
 
+//BOTÃO MAIS
+document.getElementById('botaoMAIS').addEventListener('click',  somarBotao);
+
+//BOTÃO MENOS
+document.getElementById('botaoMENOS').addEventListener('click', subtrairBotao);
+
 const Armazenar_Mais_Menos = () => {
-    sessionStorage.setItem('itemValue', value);
-    sessionStorage.setItem('itemValue', value);
+    sessionStorage.setItem('quantidade', value);
+    sessionStorage.setItem('quantidade', value);
 }
-
-
-const botaoMais = document.getElementById('botaoMAIS');
-botaoMais.addEventListener('click', () => {
-    somarBoto()
-});
-
-const botaoMenos = document.getElementById('botaoMENOS');
-botaoMenos.addEventListener('click', () => {
-    subtrairBoto()
-});
 
 const validacoes = () => {
     if (ValorDisplay.value === "" || ValorDisplay.value == 0) {
@@ -49,10 +42,11 @@ const validacoes = () => {
 
 }
 
+
 document.querySelector("#ComprarProduto").addEventListener("click", () => {
     validacoes()
 })
 
-
+//FIM ---------------------------------------------------
 
 
