@@ -49,16 +49,16 @@ const carrinhoCompras = () => {
         let div = document.createElement('div');
         div.setAttribute("class", "mercadoria");
        
-        calcular(escolhaValor, escolhaQuantidade)
+        calcular(escolhaValor, escolhaQuantidade);
 
-        let somaTotal = escolhaValor * escolhaQuantidade
+        let somaTotal = escolhaValor * escolhaQuantidade;
 
         // Exiba os valores formatados no HTML
         div.innerHTML += `
- <br> <br><span style="font-weight: bold;">PRODUTO:</span> <br>&#127826;${escolhaProduto}
- <br> <br><span style="font-weight: bold;">VALOR PRODUTO:</span> <br>&#127826;${escolhaValor.toFixed(2)}
- <br> <br><span style="font-weight: bold;">QUANTIDADE:</span> <br>&#127826;${escolhaQuantidade}
- <br> <br><span style="font-weight: bold;">VALOR TOTAL:</span> <br>&#127826;${somaTotal.toFixed(2)}
+ <br> <br><span style="font-weight: bold;"> &#127814;&#129365;&#129477;&#129365; PRODUTO:</span> <br>&#10145; ${escolhaProduto}
+ <br> <br><span style="font-weight: bold;">&#128178;VALOR PRODUTO:</span> <br>&#10145; R$ ${escolhaValor.toFixed(2)}
+ <br> <br><span style="font-weight: bold;">&#128204;QUANTIDADE:</span> <br>&#10145; ${escolhaQuantidade}
+ <br> <br><span style="font-weight: bold;">&#128181;VALOR TOTAL:</span> <br>&#10145; R$ ${somaTotal.toFixed(2)}
    `;
 
         container.appendChild(div);
