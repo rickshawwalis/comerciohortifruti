@@ -1,4 +1,5 @@
 //SCRIPT PARA COLOCAR QUANTIDADE DE ITEM A SER PEDIDAS
+document.addEventListener('DOMContentLoaded', ()=>{
 const ValorDisplay1 = document.getElementById('displayInput1');
 let value = parseInt(ValorDisplay1.value); // Move a declaração para fora dos eventos de clique
 
@@ -69,5 +70,4 @@ BotaoComprar.addEventListener("click", () => {
 })
 
 //FIM ---------------------------------------------------
-
-
+})
