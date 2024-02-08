@@ -59,7 +59,7 @@ const validacoes = () => {
          //location.reload();
         Armazenar_Mais_Menos();
         EfetuarCompra();
-        window.location.href = 'comerciohortifruti/resumo/pagina-Resumo.html'
+        window.location.href = '../comerciohortifruti/resumo/pagina-Resumo.html'
     }
 
 }
