@@ -85,16 +85,18 @@ const enviarMensagemWhatsApp = () => {
       calcular(escolhaValor, escolhaQuantidade)
 
       let somaTotal = escolhaValor * escolhaQuantidade;
-
+// Emoticon a ser enviado
+const emoticon = '🤣🤣🤣';
 
       textoParaEnviar += `
-      ${decodeURIComponent('%F0%9F%A4%A3%F0%9F%A4%A3%F0%9F%A4%A3')}
+      ${emoticon}
     \n*PEDIDO Nº:* ${numeroPedido}
     \n*PRODUTO:* \n${escolhaProduto}
     \n*VALOR PRODUTO:* R$ ${escolhaValor.toFixed(2)}
     *QUANTIDADE:* ${escolhaQuantidade}
     *VALOR TOTAL:* R$ ${somaTotal.toFixed(2)} 
    `;
+// Codificar o texto completo, incluindo o emoticon
 
       numeroPedido++;
     }
@@ -146,11 +148,11 @@ const enviarMensagemWhatsApp = () => {
 
   textoParaEnviar += `${enderecoTexto}`
 
-
+  const textoCodificado = encodeURIComponent(textoParaEnviar);
   const codigoPais = '55';
   const numeroTelefone = '87991614277';
 
-  const linkWhatsApp = `https://wa.me/${codigoPais}${numeroTelefone}?text=${encodeURIComponent(textoParaEnviar)}`;
+  const linkWhatsApp = `https://wa.me/${codigoPais}${numeroTelefone}?text=${textoCodificado}`;
   window.open(linkWhatsApp, '_blank');
 }
 
