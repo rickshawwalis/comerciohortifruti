@@ -76,44 +76,50 @@ const enviarMensagemWhatsApp = () => {
     const escolhaValor = parseFloat(sessionStorage.getItem(chaveValor));
     const escolhaQuantidade = parseInt(sessionStorage.getItem(chaveQuantidade));
 
-
     if (escolhaProduto) {
       let div = document.createElement('div');
       div.setAttribute("class", "mercadoria");
 
-      calcular(escolhaValor, escolhaQuantidade);
+      calcular(escolhaValor, escolhaQuantidade)
 
       let somaTotal = escolhaValor * escolhaQuantidade;
 
+      const emoticon = '🤣🤣🤣';
       textoParaEnviar += `
-      😊 *PEDIDO Nº:* ${numeroPedido}
-      *PRODUTO:* \n${escolhaProduto}
-      *VALOR PRODUTO:* R$ ${escolhaValor.toFixed(2)}
-      *QUANTIDADE:* ${escolhaQuantidade}
-      *VALOR TOTAL:* R$ ${somaTotal.toFixed(2)} 
+        ${emoticon}
+        \n*PEDIDO Nº:* ${numeroPedido}
+        \n*PRODUTO:* \n${escolhaProduto}
+        \n*VALOR PRODUTO:* R$ ${escolhaValor.toFixed(2)}
+        *QUANTIDADE:* ${escolhaQuantidade}
+        *VALOR TOTAL:* R$ ${somaTotal.toFixed(2)} 
       `;
 
       numeroPedido++;
     }
   }
 
-  const formaPagamento = sessionStorage.getItem('formaPagamento');
+  const utf8Encoder = new TextEncoder();
+  const textoUtf8 = utf8Encoder.encode(textoParaEnviar);
 
+  // Convertendo o texto para UTF-8 e codificando para ser seguro em uma URL
+  const textoCodificado = encodeURIComponent(String.fromCharCode.apply(null, textoUtf8));
+
+  const formaPagamento = sessionStorage.getItem('formaPagamento');
   textoParaEnviar += `
-  \n*VALOR GERAL:*  R$ ${somaGeral.toFixed(2)}`;
+      \n*VALOR GERAL:*  R$ ${somaGeral.toFixed(2)}`
 
   if (formaPagamento) {
     textoParaEnviar += `
-    \n*FORMA DE PAGAMENTO:* ${formaPagamento} 
-    `;
+        \n*FORMA DE PAGAMENTO:* ${formaPagamento} 
+      `;
   }
 
   const valorTroco = sessionStorage.getItem('Vtroco');
 
   if (valorTroco) {
     textoParaEnviar += `
-    *TROCO:* ${valorTroco}
-    `;
+      *TROCO:* ${valorTroco}
+      `;
   }
 
   //TRECHO PARA GERAR ENDEREÇO 
@@ -132,23 +138,17 @@ const enviarMensagemWhatsApp = () => {
       *Cidade:* ${endereco.cidade || 'Não fornecido'}
       *Bairro:* ${endereco.bairro || 'Não fornecido'}
       *Ponto de Referência:* ${endereco.referencia || 'Não fornecido'}
-      `;
+    `;
   }
-  const retiradaProduto = sessionStorage.getItem('escolhaEntrega');
+  const retiradaProduto = sessionStorage.getItem('escolhaEntrega')
   textoParaEnviar += ` 
-  \n\n*RETIRADA NO LOCAL*: ${retiradaProduto}`;
+    \n\n*RETIRADA NO LOCAL*: ${retiradaProduto}`
 
-  textoParaEnviar += `${enderecoTexto}`;
-
-  // Emoticon de sorrir 😊
-  const emoticonSorrir = '😊';
-
-  textoParaEnviar += ` 
-  ${emoticonSorrir} Olá! Aqui está o seu pedido:`;
+  textoParaEnviar += `${enderecoTexto}`
 
   const codigoPais = '55';
   const numeroTelefone = '87991614277';
 
-  const linkWhatsApp = `https://wa.me/${codigoPais}${numeroTelefone}?text=${encodeURI(textoParaEnviar)}`;
-  window.open(decodeURIComponent(linkWhatsApp), '_blank');
+  const linkWhatsApp = `https://wa.me/${codigoPais}${numeroTelefone}?text=${encodeURIComponent(textoParaEnviar)}`;
+  window.open(linkWhatsApp, '_blank');
 }
