@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', FormaPagamento);
 
 
 const enviarMensagemWhatsApp = () => {
-  let somaGeral = 0
+  let somaGeral = 0;
   let textoParaEnviar = '';
 
   const calcular = (escolhaValor, escolhaQuantidade) => {
@@ -81,44 +81,39 @@ const enviarMensagemWhatsApp = () => {
       let div = document.createElement('div');
       div.setAttribute("class", "mercadoria");
 
-
-      calcular(escolhaValor, escolhaQuantidade)
+      calcular(escolhaValor, escolhaQuantidade);
 
       let somaTotal = escolhaValor * escolhaQuantidade;
 
-
       textoParaEnviar += `
-    \n*PEDIDO Nº:* ${numeroPedido}
-    \n*PRODUTO:* \n${escolhaProduto}
-    \n*VALOR PRODUTO:* R$ ${escolhaValor.toFixed(2)}
-    *QUANTIDADE:* ${escolhaQuantidade}
-    *VALOR TOTAL:* R$ ${somaTotal.toFixed(2)} 
-   `;
+      😊 *PEDIDO Nº:* ${numeroPedido}
+      *PRODUTO:* \n${escolhaProduto}
+      *VALOR PRODUTO:* R$ ${escolhaValor.toFixed(2)}
+      *QUANTIDADE:* ${escolhaQuantidade}
+      *VALOR TOTAL:* R$ ${somaTotal.toFixed(2)} 
+      `;
 
       numeroPedido++;
     }
   }
 
-
-
   const formaPagamento = sessionStorage.getItem('formaPagamento');
 
   textoParaEnviar += `
-      \n*VALOR GERAL:*  R$ ${somaGeral.toFixed(2)}`
-
+  \n*VALOR GERAL:*  R$ ${somaGeral.toFixed(2)}`;
 
   if (formaPagamento) {
     textoParaEnviar += `
-        \n*FORMA DE PAGAMENTO:* ${formaPagamento} 
-      `;
+    \n*FORMA DE PAGAMENTO:* ${formaPagamento} 
+    `;
   }
 
   const valorTroco = sessionStorage.getItem('Vtroco');
 
   if (valorTroco) {
     textoParaEnviar += `
-      *TROCO:* ${valorTroco}
-      `;
+    *TROCO:* ${valorTroco}
+    `;
   }
 
   //TRECHO PARA GERAR ENDEREÇO 
@@ -130,26 +125,30 @@ const enviarMensagemWhatsApp = () => {
   let enderecoTexto = '';
   if (enderecoPreenchido) {
     enderecoTexto = `
-                 \n*ENDEREÇO PARA ENTREGA*
-                 *Nome da Rua:* ${endereco.nomeRua || 'Não fornecido'}
-                 *Número da Casa/AP:* ${endereco.numeroCasa || 'Não fornecido'}
-                 *CEP:* ${endereco.cep || 'Não fornecido'}
-                 *Cidade:* ${endereco.cidade || 'Não fornecido'}
-                 *Bairro:* ${endereco.bairro || 'Não fornecido'}
-                 *Ponto de Referência:* ${endereco.referencia || 'Não fornecido'}
-             `;
+      \n*ENDEREÇO PARA ENTREGA*
+      *Nome da Rua:* ${endereco.nomeRua || 'Não fornecido'}
+      *Número da Casa/AP:* ${endereco.numeroCasa || 'Não fornecido'}
+      *CEP:* ${endereco.cep || 'Não fornecido'}
+      *Cidade:* ${endereco.cidade || 'Não fornecido'}
+      *Bairro:* ${endereco.bairro || 'Não fornecido'}
+      *Ponto de Referência:* ${endereco.referencia || 'Não fornecido'}
+      `;
   }
-  const retiradaProduto = sessionStorage.getItem('escolhaEntrega')
+  const retiradaProduto = sessionStorage.getItem('escolhaEntrega');
   textoParaEnviar += ` 
-    \n\n*RETIRADA NO LOCAL*: ${retiradaProduto}`
+  \n\n*RETIRADA NO LOCAL*: ${retiradaProduto}`;
 
-  textoParaEnviar += `${enderecoTexto}`
+  textoParaEnviar += `${enderecoTexto}`;
 
+  // Emoticon de sorrir 😊
+  const emoticonSorrir = '😊';
+
+  textoParaEnviar += ` 
+  ${emoticonSorrir} Olá! Aqui está o seu pedido:`;
 
   const codigoPais = '55';
   const numeroTelefone = '87991614277';
 
-  const linkWhatsApp = `https://wa.me/${codigoPais}${numeroTelefone}?text=${encodeURIComponent(textoParaEnviar)}`;
-  window.open(linkWhatsApp, '_blank');
+  const linkWhatsApp = `https://wa.me/${codigoPais}${numeroTelefone}?text=${encodeURI(textoParaEnviar)}`;
+  window.open(decodeURIComponent(linkWhatsApp), '_blank');
 }
-
