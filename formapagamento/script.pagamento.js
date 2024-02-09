@@ -64,7 +64,7 @@ const enviarMensagemWhatsApp = () => {
     somaGeral += escolhaValor * escolhaQuantidade;
   };
 
-  //contador de pedidos
+  // Contador de pedidos
   let numeroPedido = 1;
 
   for (let i = 0; i < sessionStorage.length; i++) {
@@ -77,10 +77,7 @@ const enviarMensagemWhatsApp = () => {
     const escolhaQuantidade = parseInt(sessionStorage.getItem(chaveQuantidade));
 
     if (escolhaProduto) {
-      let div = document.createElement('div');
-      div.setAttribute("class", "mercadoria");
-
-      calcular(escolhaValor, escolhaQuantidade)
+      calcular(escolhaValor, escolhaQuantidade);
 
       let somaTotal = escolhaValor * escolhaQuantidade;
 
@@ -98,15 +95,14 @@ const enviarMensagemWhatsApp = () => {
     }
   }
 
+  // Convertendo o texto para UTF-8 e codificando para ser seguro em uma URL
   const utf8Encoder = new TextEncoder();
   const textoUtf8 = utf8Encoder.encode(textoParaEnviar);
-
-  // Convertendo o texto para UTF-8 e codificando para ser seguro em uma URL
   const textoCodificado = encodeURIComponent(String.fromCharCode.apply(null, textoUtf8));
 
   const formaPagamento = sessionStorage.getItem('formaPagamento');
   textoParaEnviar += `
-      \n*VALOR GERAL:*  R$ ${somaGeral.toFixed(2)}`
+      \n*VALOR GERAL:*  R$ ${somaGeral.toFixed(2)}`;
 
   if (formaPagamento) {
     textoParaEnviar += `
@@ -122,11 +118,10 @@ const enviarMensagemWhatsApp = () => {
       `;
   }
 
-  //TRECHO PARA GERAR ENDEREÇO 
+  // Trecho para gerar endereço 
   const endereco = JSON.parse(sessionStorage.getItem('endereco')) || {};
-
   // Verifica se o endereço foi preenchido
-  const enderecoPreenchido = (endereco.nomeRua || endereco.numeroCasa || endereco.cep || endereco.cidade || endereco.bairro || endereco.referencia);
+  const enderecoPreenchido = endereco.nomeRua || endereco.numeroCasa || endereco.cep || endereco.cidade || endereco.bairro || endereco.referencia;
 
   let enderecoTexto = '';
   if (enderecoPreenchido) {
@@ -140,11 +135,12 @@ const enviarMensagemWhatsApp = () => {
       *Ponto de Referência:* ${endereco.referencia || 'Não fornecido'}
     `;
   }
-  const retiradaProduto = sessionStorage.getItem('escolhaEntrega')
+  
+  const retiradaProduto = sessionStorage.getItem('escolhaEntrega');
   textoParaEnviar += ` 
-    \n\n*RETIRADA NO LOCAL*: ${retiradaProduto}`
+    \n\n*RETIRADA NO LOCAL*: ${retiradaProduto || 'Não fornecido'}`;
 
-  textoParaEnviar += `${enderecoTexto}`
+  textoParaEnviar += enderecoTexto;
 
   const codigoPais = '55';
   const numeroTelefone = '87991614277';
