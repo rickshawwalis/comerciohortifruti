@@ -71,4 +71,4 @@ const FormEnd = () => {
     Escolha();
     window.location.href = '/comerciohortifruti/formapagamento/pagamento.html'
   })
-  w
+  
