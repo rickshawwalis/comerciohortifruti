@@ -55,7 +55,6 @@ const FormaPagamento = () => {
 
 document.addEventListener('DOMContentLoaded', FormaPagamento);
 
-
 const enviarMensagemWhatsApp = () => {
   let somaGeral = 0;
   let textoParaEnviar = '';
@@ -85,11 +84,8 @@ const enviarMensagemWhatsApp = () => {
 
       let somaTotal = escolhaValor * escolhaQuantidade;
 
-      // Emoticon feliz 😊
-      const emoticonFeliz = String.fromCodePoint(0x1F60A);
-
       textoParaEnviar += `
-      ${emoticonFeliz} *PEDIDO Nº:* ${numeroPedido}
+      \u{1F60A} *PEDIDO Nº:* ${numeroPedido}
       *PRODUTO:* \n${escolhaProduto}
       *VALOR PRODUTO:* R$ ${escolhaValor.toFixed(2)}
       *QUANTIDADE:* ${escolhaQuantidade}
@@ -144,7 +140,7 @@ const enviarMensagemWhatsApp = () => {
   textoParaEnviar += `${enderecoTexto}`;
 
   // Emoticon de sorrir 😊
-  const emoticonSorrir = String.fromCodePoint(0x1F60A);
+  const emoticonSorrir = '\u{1F60A}';
 
   textoParaEnviar += ` 
   ${emoticonSorrir} Olá! Aqui está o seu pedido:`;
