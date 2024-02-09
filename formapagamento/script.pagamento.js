@@ -78,10 +78,6 @@ const enviarMensagemWhatsApp = () => {
 
 
     if (escolhaProduto) {
-      let div = document.createElement('div');
-      div.setAttribute("class", "mercadoria");
-
-
       calcular(escolhaValor, escolhaQuantidade)
 
       let somaTotal = escolhaValor * escolhaQuantidade;
