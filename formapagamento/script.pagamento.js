@@ -18,9 +18,9 @@ const FormaPagamento = () => {
         trocoSection.style.display = 'block';
         sessionStorage.setItem('formaPagamento', 'DINHEIRO');
       }
-      else if (escolhaPagamento === 'CARTÃO' || escolhaPagamento === 'PIX') {
+      else if (escolhaPagamento === 'PIX') {
         trocoSection.style.display = 'none';
-        sessionStorage.setItem('formaPagamento', escolhaPagamento);
+        sessionStorage.setItem('formaPagamento', 'PIX');
       }
     }
   }
@@ -95,8 +95,6 @@ const enviarMensagemWhatsApp = () => {
     }
   }
 
-
-
   const formaPagamento = sessionStorage.getItem('formaPagamento');
 
   textoParaEnviar += `
@@ -119,28 +117,6 @@ const enviarMensagemWhatsApp = () => {
 
   //TRECHO PARA GERAR ENDEREÇO 
   const endereco = JSON.parse(sessionStorage.getItem('endereco')) || {};
-
-  // Verifica se o endereço foi preenchido
-  const enderecoPreenchido = (endereco.nomeRua || endereco.numeroCasa || endereco.cep || endereco.cidade || endereco.bairro || endereco.referencia);
-
-  let enderecoTexto = '';
-  if (enderecoPreenchido) {
-    enderecoTexto = `
-                 \n*ENDEREÇO PARA ENTREGA*
-                 *Nome da Rua:* ${endereco.nomeRua || 'Não fornecido'}
-                 *Número da Casa/AP:* ${endereco.numeroCasa || 'Não fornecido'}
-                 *CEP:* ${endereco.cep || 'Não fornecido'}
-                 *Cidade:* ${endereco.cidade || 'Não fornecido'}
-                 *Bairro:* ${endereco.bairro || 'Não fornecido'}
-                 *Ponto de Referência:* ${endereco.referencia || 'Não fornecido'}
-             `;
-  }
-  const retiradaProduto = sessionStorage.getItem('escolhaEntrega')
-  textoParaEnviar += ` 
-    \n\n*RETIRADA NO LOCAL*: ${retiradaProduto}`
-
-  textoParaEnviar += `${enderecoTexto}`
-
 
   const codigoPais = '55';
   const numeroTelefone = '87991614277';
